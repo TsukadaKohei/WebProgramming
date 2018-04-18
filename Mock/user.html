@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ユーザー一覧</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/origin/user.css">
+</head>
+<body>
+	<form>
+	<nav class=" navbar-light bg-light">
+
+
+
+    <ul  class="nav justify-content-end" >
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">ユーザー名</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">新規登録</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="file:///C:/Users/mound/Documents/WebProgramming/Mock/login.html?">ログアウト</a>
+      </li>
+
+    </ul>
+
+</nav>
+	<div class="container">
+	<h1>ユーザ一覧</h1>
+
+
+
+	 <div class="form-group row">
+    <label for="inputlogin" class="col-sm-4 col-form-label">ログインID</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="inputlogin" placeholder="ログインID">
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="inputuser" class="col-sm-4 col-form-label">ユーザー名</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="inputPassword" placeholder="ユーザー名">
+    </div>
+
+
+
+
+  </div>
+
+ <div class="form-group row">
+<label class="col-sm-4 col-form-label">生年月日</label>
+<div class="date col-sm-6">
+<div class="row">
+<div class="col-sm-5">
+<input type="date" class="form-control" id="dt" onchange="mydate1();" />
+</div>
+<div  class="col-sm-2">
+<a>～</a>
+</div>
+<div  class="col-sm-5">
+<input type="date" class="form-control" id="dt" onchange="mydate1();" />
+</div>
+</div>
+</div>
+</div>
+<br><br>
+
+ <a href="" type="submit" class="btn btn-secondary text-center">検索</a>
+
+
+<br><br>
+<table class="table">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">ログインID</th>
+      <th scope="col">ユーザー名</th>
+      <th scope="col">生年月日</th>
+      <th scope="col" > </th>
+       <th scope="col" > </th>
+        <th scope="col" > </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">id0001</th>
+      <td>田中太郎</td>
+      <td>1989年04月26日</td>
+
+      <td><a href="file:///C:/Users/mound/Documents/WebProgramming/Mock/user%20info.html?#" type="button" class="btn btn-primary">詳細</a></td>
+     <td><a href="file:///C:/Users/mound/Documents/WebProgramming/Mock/user%20update.html?#" type="button" class="btn btn-success">更新</a></td>
+	<td><a href="file:///C:/Users/mound/Documents/WebProgramming/Mock/user%20delete.html?#" type="button" class="btn btn-danger">削除</a></td>
+
+   </tr>
+    <tr>
+      <th scope="row">id0002</th>
+      <td>佐藤二朗</td>
+      <td>2001年11月12日</td>
+      <td><a href="file:///C:/Users/mound/Documents/WebProgramming/Mock/user%20info.html?#" type="button" class="btn btn-primary">詳細</a></td>
+   	<td><a href="file:///C:/Users/mound/Documents/WebProgramming/Mock/user%20update.html?#" type="button" class="btn btn-success">更新</a></td>
+   <td><a href="file:///C:/Users/mound/Documents/WebProgramming/Mock/user%20delete.html?#" type="button" class="btn btn-danger">削除</a></td>
+    </tr>
+
+
+    <tr>
+      <th scope="row">id0003</th>
+      <td>佐川真司</td>
+      <td>2000年01月01日</td>
+      <td><a href="file:///C:/Users/mound/Documents/WebProgramming/Mock/user%20info.html?#" type="button" class="btn btn-primary">詳細</a></td>
+ 	 <td><a href="file:///C:/Users/mound/Documents/WebProgramming/Mock/user%20update.html?#" type="button" class="btn btn-success">更新</a></td>
+	<td><a href="file:///C:/Users/mound/Documents/WebProgramming/Mock/user%20delete.html?#" type="button" class="btn btn-danger">削除</a></td>
+
+ </tr>
+  </tbody>
+</table>
+		</div>
+		</form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+@charset "UTF-8";
+@charset "UTF-8";
+h1{
+	text-align: center;
+	padding:100px;
+
+}
+
+
+
+
+.container{
+
+	text-align: center;
+	margin:20px auto;
+	padding:100px 80px;
+
+}
+
+.form-group{
+margin:20px auto;
+padding-left:200px;
+}
+
+
+.bg-light {
+    background-color: #343a40!important;
+
+}
+
+
+
+
+
+}
+
+
+.user{
+padding-right:100px;
+margin:20px auto;
+text-decoration:underline;
+
+}
+
+.date{padding;70px 60px;}
+
+.btn btn-primary{
+	text-align: center;
+
+a{
+    color: #007bff;
+    text-decoration: underline;

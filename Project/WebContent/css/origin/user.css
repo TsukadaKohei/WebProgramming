@@ -1,0 +1,54 @@
+
+body{
+
+}
+
+h1{
+	text-align: center;
+	padding:100px;
+
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+}
+
+
+.container{
+
+	text-align: center;
+	margin:20px auto;
+	padding:100px 80px;
+}
+
+
+
+
+.bg-light {
+    background-color: #343a40!important;
+
+}
+
+
+
+
+
+}
+
+
+.user{
+padding-right:100px;
+margin:20px auto;
+text-decoration:underline;
+
+}
+
+.date{padding;70px 60px;}
+
+
+.btn {
+
+margin-center: auto;
+
+}
