@@ -21,7 +21,7 @@
         <a class="nav-link" href="#">${userInfo.name} さん</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="file:///C:/Users/mound/Documents/WebProgramming/Mock/login.html?">ログアウト</a>
+       <a class="nav-link" href="LogoutServlet">ログアウト</a>
       </li>
 
 
@@ -30,7 +30,11 @@
 <form action="UserUpdateServlet" method="post">
 	<div class="container">
 	<h1>ユーザ情報更新</h1>
-
+<c:if test="${errMsg != null}" >
+	    <div class="alert alert-danger" role="alert">
+		  ${errMsg}
+		</div>
+	</c:if>
 
 <input type="hidden" name="id" value="${user.id}" class="col-sm-6 col-form-label">
 	 <div class="form-group row">
@@ -52,7 +56,7 @@
   <div class="form-group row">
     <label for="inputPassword" class="col-sm-4 col-form-label">パスワード確認</label>
     <div class="col-sm-6">
-      <input type="password" name="password" class="form-control" id="inputPassword" placeholder="パスワードをもう一度入力してください">
+      <input type="password" name="password2" class="form-control" id="inputPassword" placeholder="パスワードをもう一度入力してください">
     </div>
   </div>
 

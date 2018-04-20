@@ -21,7 +21,7 @@
         <a class="nav-link" href="#">ユーザー名</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="file:///C:/Users/mound/Documents/WebProgramming/Mock/login.html?">ログアウト</a>
+        <a class="nav-link" href="LogoutServlet">ログアウト</a>
       </li>
 
 

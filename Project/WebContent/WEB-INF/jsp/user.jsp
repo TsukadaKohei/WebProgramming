@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/origin/user.css">
 </head>
 <body>
-	<form>
+	<form action="UserServlet" method="post">
 	<nav class=" navbar-light bg-light">
 
 
@@ -37,7 +37,7 @@
 	 <div class="form-group row">
     <label for="inputlogin" class="col-sm-4 col-form-label">ログインID</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="inputlogin" placeholder="ログインID">
+      <input type="text" name="loginId" class="form-control" id="inputlogin" placeholder="ログインID">
     </div>
   </div>
 
@@ -45,7 +45,7 @@
   <div class="form-group row">
     <label for="inputuser" class="col-sm-4 col-form-label">ユーザー名</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="inputPassword" placeholder="ユーザー名">
+      <input type="text" name="name" class="form-control" id="inputPassword" placeholder="ユーザー名">
     </div>
 
 
@@ -58,20 +58,20 @@
 <div class="date col-sm-6">
 <div class="row">
 <div class="col-sm-5">
-<input type="date" class="form-control" id="dt" onchange="mydate1();" />
+<input type="date" name="birthDate1" class="form-control" id="dt" onchange="mydate1();" />
 </div>
 <div  class="col-sm-2">
 <a>～</a>
 </div>
 <div  class="col-sm-5">
-<input type="date" class="form-control" id="dt" onchange="mydate1();" />
+<input type="date" name="birthDate2" class="form-control" id="dt" onchange="mydate1();" />
 </div>
 </div>
 </div>
 </div>
 <br><br>
 
- <a href="" type="submit" class="btn btn-secondary text-center">検索</a>
+ <button type="submit" class="btn btn-secondary text-center">検索</button>
 
 
 <br><br>
@@ -89,15 +89,36 @@
   </thead>
   <tbody>
 
+
+
+
+
+
+
+
     	<c:forEach var="user" items="${userList}">
 <tr>
+
       <td>${user.loginId}</td>
       <td>${user.name}</td>
       <td>${user.birthDate}</td>
-
+<!-- TODO 未実装；ログインボタンの表示制御を行う -->
+<c:choose>
+	<c:when test="${userInfo.loginId == 'admin'}">
       <td><a href="UserInfoServlet?id=${user.id}" type="button" class="btn btn-primary">詳細</a></td>
      <td><a href="UserUpdateServlet?id=${user.id}" type="button" class="btn btn-success">更新</a></td>
-	<td><a href="UserDeleteServlet?id=${user.id}" type="button" class="btn btn-danger">削除</a></td>
+		<td><a href="UserDeleteServlet?id=${user.id}" type="button" class="btn btn-danger">削除</a></td>
+	</c:when>
+
+	<c:when test="${userInfo.loginId != 'admin' && userInfo.loginId == user.loginId}">
+	  <td><a href="UserInfoServlet?id=${user.id}" type="button" class="btn btn-primary">詳細</a></td>
+	<td><a href="UserUpdateServlet?id=${user.id}" type="button" class="btn btn-success">更新</a></td>
+	</c:when>
+
+	<c:when test="${userInfo.loginId != 'admin'}">
+	  <td><a href="UserInfoServlet?id=${user.id}" type="button" class="btn btn-primary">詳細</a></td>
+	</c:when>
+</c:choose>
 </tr>
 		</c:forEach>
 

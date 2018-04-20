@@ -33,8 +33,8 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				HttpSession session = request.getSession();
-				User user = (User)session.getAttribute("userInfo");
-			     if(user == null)
+				User u = (User)session.getAttribute("userInfo");
+			     if(u == null)
 			     {
 			         response.sendRedirect("LoginServlet");
 			         return;
@@ -52,17 +52,25 @@ public class UserServlet extends HttpServlet {
 
 
 
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
-	dispatcher.forward(request, response);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
+				dispatcher.forward(request, response);
 	}
 	/**
 	 *
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8"); //文字化け防止
+		String loginId = request.getParameter("loginId");
+		String name = request.getParameter("name");
+		String  birthDate1 = request.getParameter("birthDate1");
+		String  birthDate2 = request.getParameter("birthDate2");
 
+				UserDao userDao = new UserDao();
+				List<User> userList = userDao.findSearch(loginId,name,birthDate1,birthDate2);
+				request.setAttribute("userList", userList);
 
-
-
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
+				dispatcher.forward(request, response);
 	}
 }

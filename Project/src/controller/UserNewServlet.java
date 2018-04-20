@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
+import model.User;
 
 /**
  * Servlet implementation class UserNewServlet
@@ -30,6 +32,16 @@ public class UserNewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		User u = (User)session.getAttribute("userInfo");
+	     if(u == null)
+	     {
+	         response.sendRedirect("LoginServlet");
+	         return;
+	     }
+
+
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user new.jsp");
 		dispatcher.forward(request, response);
@@ -55,24 +67,33 @@ public class UserNewServlet extends HttpServlet {
 
 		UserDao userDao = new UserDao();
 		//パスワードが同じか、入力不十分
-		if(password!=password2 || loginId==null || password==null || password2==null || name==null || birthDate==null) {
-			request.setAttribute("errMsg", "入力された内容は正しくありません");
-			response.sendRedirect("UserNewServlet");
+		if (!(password.equals(password2))) {
+			request.setAttribute("errMsg", "パスワードが一致しておりません");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user new.jsp");
+			dispatcher.forward(request, response);
+			return;
+			}
+
+		if (loginId.equals("") || password.equals("") || password2.equals("") || name.equals("") || birthDate.equals("")) {
+			request.setAttribute("errMsg", "入力されてない項目があります");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user new.jsp");
+			dispatcher.forward(request, response);
 			return;
 			}
 
 		//ログインIDが被っていたらエラー
-		String test = userDao.testUserNew(loginId);
-		if(test != null) {
+		boolean test = userDao.isLogiIdCheck(loginId);
+		if(test) {
 			request.setAttribute("errMsg", "既に登録されています");
-			response.sendRedirect("UserNewServlet");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user new.jsp");
+			dispatcher.forward(request, response);
 			return;
 			}
 
 
 
 
-		userDao.insertUserNew(loginId, password2, name, birthDate);
+		userDao.insertUserNew(loginId, password, name, birthDate);
 
 
 		response.sendRedirect("UserServlet");
